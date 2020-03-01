@@ -11,3 +11,12 @@ export function addClass(el, className) {
   newClass.push(className)
   el.className = newClass.join(' ')
 }
+
+export const htmlDataGetOrSet = (el, key, val) => {
+  const attrPrefix = 'data-'
+  if (!val) {
+    return el && el.getAttribute(attrPrefix + key)
+  } else {
+    el.setAttribute(attrPrefix + key, val)
+  }
+}
