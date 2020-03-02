@@ -18,3 +18,32 @@ export function getSinger() {
     return Promise.resolve(res.data)
   })
 }
+
+export const getSingerSongList = function (singer) {
+  const singerSongListUrl = '/api'
+  const data = {
+    ...qqMusicConfigParam,
+    '-': 'getSingerSong5820184818895127',
+    data: {
+      'comm': {
+        'ct': 24,
+        'cv': 0
+      },
+      'singerSongList': {
+        'method': 'GetSingerSongList',
+        'param': {
+          'order': 1,
+          'singerMid': singer.id,
+          'begin': 0,
+          'num': 20
+        },
+        'module': 'musichall.song_list_server'
+      }
+    }
+  }
+  return axios(singerSongListUrl, {
+    params: data
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
