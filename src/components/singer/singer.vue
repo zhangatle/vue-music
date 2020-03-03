@@ -40,11 +40,11 @@
       _getSinger() {
         getSinger().then(res => {
           if (res.code === ERR_OK) {
-            this.singers = this._normallizeSingerData(res.data.list)
+            this.singers = this._normalizeSingerData(res.data.list)
           }
         })
       },
-      _normallizeSingerData(list) {
+      _normalizeSingerData(list) {
         const singer = {
           hot: {
             title: HOT_NAME,

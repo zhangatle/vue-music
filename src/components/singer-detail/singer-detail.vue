@@ -40,11 +40,11 @@
         }
         getSingerSongList(this.singer).then((res) => {
           if (res.code === ERR_OK) {
-            this.songs = this._normallizeSong(res.singerSongList.data.songList)
+            this.songs = this._normalizeSong(res.singerSongList.data.songList)
           }
         })
       },
-      _normallizeSong(list) {
+      _normalizeSong(list) {
         const songs = []
         list.forEach(song => {
           songs.push(createSong(song.songInfo))

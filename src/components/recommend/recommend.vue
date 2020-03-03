@@ -33,7 +33,7 @@
                 <h2 class="name" v-html="item.name"></h2>
                 <p class="desc" v-html="item.singer"></p>
               </div>
-              <div class="interval">{{_normallizeSongInterval(item.interval)}}</div>
+              <div class="interval">{{_normalizeSongInterval(item.interval)}}</div>
             </li>
           </ul>
           <loading class="newsong-loading" v-show="newSongLoading && !isNewSongBottom" />
@@ -109,7 +109,7 @@
         getNewSongList(this.newSongListPageIndex).then((res) => {
           if (res.code === ERR_OK) {
             if (res.newSongList && res.newSongList.length > 0) {
-              const list = this._normallizeSong(res.newSongList)
+              const list = this._normalizeSong(res.newSongList)
               this.newSongList = [...this.newSongList, ...list]
               this.newSongLoading = false
             } else {
@@ -118,7 +118,7 @@
           }
         })
       },
-      _normallizeSong(list) {
+      _normalizeSong(list) {
         const songs = []
         list.forEach(song => {
           songs.push(createSong(song))
@@ -137,7 +137,7 @@
         })
         this.setAlbum(item)
       },
-      _normallizeSongInterval(seconds) {
+      _normalizeSongInterval(seconds) {
         const mins = `${Math.floor(seconds / 60)}`
         const secs = `${seconds % 60}`
         return `${mins.padStart(2, '0')}:${secs.padStart(2, '0')}`

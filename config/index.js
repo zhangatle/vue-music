@@ -19,12 +19,19 @@ module.exports = {
         }
       },
       "/v8":{
-        target: ' https://c.y.qq.com/v8/fcg-bin/v8.fcg',
+        target: 'https://c.y.qq.com/v8/fcg-bin/v8.fcg',
         changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
         pathRewrite: {
           '^/v8': ''
         }
-      }
+      },
+      "/lyrics":{
+        target: 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg',
+        changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
+        pathRewrite: {
+          '^/lyrics': ''
+        }
+      },
     },
 
     // Various Dev Server settings
