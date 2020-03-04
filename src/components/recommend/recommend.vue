@@ -5,7 +5,7 @@
         <div v-if="sliderItems.length" class="slider-wrapper" ref="sliderWrapper">
           <slider>
             <div v-for="item in sliderItems" :key="item.id">
-              <a :href="item.jump_info.url">
+              <a :href="['https://y.qq.com/n/yqq/album/' + item.jump_info.url + '.html']">
                 <img :src="item.pic_info.url" alt="" class="needsclick" @load="loadImg">
               </a>
             </div>

@@ -364,7 +364,6 @@
         this.lyricCurrentTxt = txt
       },
       getLyric() {
-        console.log(this.currentSong)
         this.currentSong.getLyric().then(lyric => {
           if (this.currentSong.lyric !== lyric) {
             return
@@ -413,9 +412,7 @@
       },
       currentSong(newSong, oldSong) {
         getSongVkey(newSong.mid).then((data) => {
-          console.log(data)
           const currentSongUrl = data.req_0.data.sip[0] + data.req_0.data.midurlinfo[0].purl
-          console.log(currentSongUrl)
           this.setCurrentSongUrl(currentSongUrl)
           if (this.currentLyric) {
             this.currentLyric.stop()
