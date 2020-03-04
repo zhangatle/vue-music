@@ -580,7 +580,7 @@
           .time
             color: $color-text
             font-size: $font-size-small
-            flex: 0 0 32px
+            flex: 0 0 36px
             line-height: 30px
             width: 30px
             &.time-l

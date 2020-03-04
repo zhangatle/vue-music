@@ -19,7 +19,7 @@ export function getSinger() {
   })
 }
 
-export const getSingerSongList = function (singer) {
+export function getSingerSongList(singer) {
   const singerSongListUrl = '/api'
   const data = {
     ...qqMusicConfigParam,
@@ -48,7 +48,7 @@ export const getSingerSongList = function (singer) {
   })
 }
 
-export const getSongVkey = function (songId) {
+export function getSongVkey(songId) {
   const songVkeyUrl = '/api'
   const data = {
     ...qqMusicConfigParam,
@@ -75,6 +75,24 @@ export const getSongVkey = function (songId) {
     }
   }
   return axios(songVkeyUrl, {
+    params: data
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+export function getAlbumSongList(albumId) {
+  const singerSongListUrl = '/getAlbumSongList'
+  const data = {
+    ...qqMusicConfigParam,
+    type: 1,
+    json: 1,
+    utf8: 1,
+    onlysong: 0,
+    new_format: 1,
+    disstid: albumId
+  }
+  return axios(singerSongListUrl, {
     params: data
   }).then(res => {
     return Promise.resolve(res.data)

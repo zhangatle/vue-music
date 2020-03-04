@@ -25,7 +25,7 @@
         <div class="recommend-list">
           <h1 class="list-title">最新音乐</h1>
           <ul>
-            <li v-for="item in newSongList" class="item" :key="item.id">
+            <li v-for="(item, index) in newSongList" class="item" :key="item.id" @click="selectSong(item, index)">
               <div class="icon">
                 <img width="60" height="60" v-lazy="item.image" />
               </div>
@@ -33,7 +33,7 @@
                 <h2 class="name" v-html="item.name"></h2>
                 <p class="desc" v-html="item.singer"></p>
               </div>
-              <div class="interval">{{_normalizeSongInterval(item.interval)}}</div>
+<!--              <div class="interval">{{_normalizeSongInterval(item.interval)}}</div>-->
             </li>
           </ul>
           <loading class="newsong-loading" v-show="newSongLoading && !isNewSongBottom" />
@@ -52,15 +52,15 @@
   import {getSlider, getRecommend, getNewSongList} from 'api/recommend'
   import {createSong} from 'common/js/song'
   import Loading from 'base/loading/loading'
-  import { mapMutations } from 'vuex'
+  import {mapActions, mapMutations} from 'vuex'
   import {ERR_OK} from 'api/config'
   import Slider from 'base/slider/slider'
   import Scroll from 'base/scroll/scroll'
-  // import {playlistMixin} from 'common/js/mixin'
+  import {playlistMixin} from 'common/js/mixin'
 
   export default {
     name: 'Recommend',
-    // mixins: [playlistMixin],
+    mixins: [playlistMixin],
     data() {
       return {
         sliderItems: [], // 轮播图信息
@@ -84,11 +84,18 @@
       ...mapMutations({
         setAlbum: 'SET_ALBUM'
       }),
-      // handlePlaylist(playlist) {
-      //   const bottom = playlist.length > 0 ? '60px' : 0
-      //   this.$refs.recommend.style.bottom = bottom
-      //   this.$refs.scroll.refresh()
-      // },
+      ...mapActions(['selectPlay']),
+      selectSong(song, index) {
+        this.selectPlay({
+          list: this.newSongList,
+          index
+        })
+      },
+      handlePlaylist(playlist) {
+        const bottom = playlist.length > 0 ? '60px' : 0
+        this.$refs.recommend.style.bottom = bottom
+        this.$refs.scroll.refresh()
+      },
       _getSlider() {
         getSlider().then((res) => {
           if (res.code === ERR_OK) {
@@ -236,18 +243,29 @@
               display: -webkit-box
               -webkit-line-clamp: 2
               -webkit-box-orient: vertical
-              color: @color-text
+              color: $color-text-d
               no-wrap()
           .interval
             flex: 0 0 50px
             text-align: center
             align-self: center
-            color: @color-text-ll
-            font-size: @font-size-small
+            color: $color-text-ll
+            font-size: $font-size-small
             margin-left: 10px
         .loading-container
           position: absolute
           width: 100%
           top: 50%
           transform: translateY(-50%)
+      .loading-container
+        position: absolute
+        width: 100%
+        top: 50%
+        transform: translateY(-50%)
+      .recommend-bottom
+        text-align: center
+        color: $color-text-d
+        font-size: $font-size-medium
+        height: 40px
+        line-height: 40px
 </style>
