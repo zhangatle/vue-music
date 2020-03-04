@@ -31,12 +31,14 @@
   import Loading from 'base/loading/loading'
   import {prefixStyle} from 'common/js/dom'
   import {mapActions} from 'vuex'
+  import { playlistMixin } from 'common/js/mixin'
   const TITLE_HEIGHT = 40 // 标题高度
   const transform = prefixStyle('transform') // transform 添加css前缀
   let minTranslateY = 0 // 歌单滚动最小坐标 Y
   let imgHeight = 0 // 背景图片高度
   export default {
     name: 'music-list',
+    mixins: [playlistMixin],
     props: {
       title: {
         type: String,
