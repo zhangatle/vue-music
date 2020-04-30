@@ -1,7 +1,7 @@
 {
   "name": "vue-music",
   "version": "1.0.0",
-  "description": "音乐插入器",
+  "description": "音乐播放器",
   "author": "zhangatle <zhangatle@gmail.com>",
   "private": true,
   "scripts": {
@@ -68,10 +68,10 @@
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
-    "webpack": "^3.6.0",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack": "^3.12.0",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-dev-server": "^2.11.5",
+    "webpack-merge": "^4.2.2"
   },
   "engines": {
     "node": ">= 6.0.0",
