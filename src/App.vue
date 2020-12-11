@@ -1,30 +1,28 @@
 <template>
   <div id="app">
-    <m-header></m-header>
-    <tab></tab>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
-    <player></player>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import MHeader from 'components/m-header/m-header'
-import Tab from 'components/tab/tab'
-import Player from 'components/player/player'
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
   name: 'App',
   components: {
-    MHeader,
-    Tab,
-    Player
+    HelloWorld
   }
 }
 </script>
 
-<style scoped lang="stylus" rel="stylesheet/stylus">
-@import "~common/stylus/variable"
-  #app
-    color: $color-theme
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>
