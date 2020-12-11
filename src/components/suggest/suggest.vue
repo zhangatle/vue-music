@@ -89,6 +89,7 @@ export default {
       this.$emit('listScroll')
     },
     selectItem(item) {
+      console.log(item)
       if (item.type === TYPE_SINGER) {
         const singer = new Singer({
           id: item.singermid,
@@ -131,17 +132,11 @@ export default {
       let ret = []
       list.forEach((musicData) => {
         if (musicData.songid && musicData.albummid) {
-          let newMusicData = {
-            id: musicData.songid,
-            mid: musicData.songmid,
-            singer: musicData.singer,
-            name: musicData.songname,
-            album: {
-              name: musicData.albumname
-            },
-            interval: musicData.interval,
-          }
-          ret.push(createSong(newMusicData))
+          musicData.id = musicData.songid
+          musicData.mid = musicData.media_mid
+          musicData.name = musicData.songname
+          musicData['album'] = {name:musicData.albumname, mid:musicData.albummid}
+          ret.push(createSong(musicData))
         }
       })
       return ret
