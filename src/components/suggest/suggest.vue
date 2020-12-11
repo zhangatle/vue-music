@@ -16,7 +16,6 @@
           <p class="text" v-html="getDisplayName(item)"></p>
         </div>
       </li>
-      >
       <loading v-show="hasMore" title=""></loading>
     </ul>
     <div v-show="!hasMore && !result.length" class="no-result-wrapper">
