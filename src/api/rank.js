@@ -2,7 +2,7 @@ import {qqMusicConfigParam} from './config'
 import axios from 'axios'
 
 export function getTopList() {
-  const topListUrl = '/getTopList'
+  const topListUrl = '/api'
   const data = {
     ...qqMusicConfigParam,
     '-': 'recom' + (+new Date()),
@@ -25,7 +25,7 @@ export function getTopList() {
 }
 
 export const getTopListSongs = function (topId) {
-  const topSongUrl = '/getTopListSongs'
+  const topSongUrl = '/api'
   const data = {
     '-': 'getUCGI4195015404019351',
     'needNewCode': 0,

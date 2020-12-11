@@ -28,13 +28,30 @@ module.exports = {
           '^/v8': ''
         }
       },
-      "/lyrics":{
+      "/getAlbumSongList":{
+        target: 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg',
+        changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
+        pathRewrite: {
+          '^/getAlbumSongList': ''
+        },
+        headers: {
+          referer: 'https://c.y.qq.com/',
+          host: 'c.y.qq.com'
+        },
+        ws:true,
+      },
+      "/lyric":{
         target: 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg',
         changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
         pathRewrite: {
-          '^/lyrics': ''
-        }
-      },
+          '^/lyric': ''
+        },
+        headers: {
+          referer: 'https://c.y.qq.com/',
+          host: 'c.y.qq.com'
+        },
+        ws:true,
+      }
     }
   }
 }

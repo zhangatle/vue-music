@@ -2,7 +2,7 @@ import {qqMusicConfigParam} from './config'
 import axios from 'axios'
 
 export const getLyric = function (songId) {
-  const lyricUrl = '/getLyric'
+  const lyricUrl = '/lyric'
   const data = {
     ...qqMusicConfigParam,
     '-': 'MusicJsonCallback_lrc',
